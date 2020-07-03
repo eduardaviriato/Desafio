@@ -15,12 +15,12 @@ class App extends Component {
     return (
       <Router>
         <div className='container'>
-          <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+          <nav className='navbar navbar-expand-lg navbar-dark bg-danger'>
             <Link to={'/'} className='navbar-brand'>Desafio Vtex</Link>
             <div className='collapse navbar-collapse' id='navbarSupportedContent'>
               <ul className='navbar-nav mr-auto'>
                 <li>
-                  <Link to={'/'} className='nav-link'>Home</Link>
+                  <Link to={'/'} className='nav-link '>Home</Link>
                 </li>
                 <li>
                   <Link to={'/signin'} className='nav-link'>Login</Link>
