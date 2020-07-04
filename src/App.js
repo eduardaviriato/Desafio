@@ -1,49 +1,66 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-
-
-import Main from './components/Main'
+import Home from './components/Home'
 import Signin from './components/Signin'
 import Signup from './components/Signup'
 import ContentA from './components/ContentA'
 import ContentB from './components/ContentB'
+import Headbar, {TranspHeadbar, HeadbarBrand, HeadbarList, HeadbarItem, HeadbarAccount, Brand} from './components/Headbar'
+import { TinyRedButton } from './components/Buttons'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.unloggedItemList =
+    <TranspHeadbar>
+      <div className="diagonal-poly"></div>
+      <HeadbarBrand><Link to="/" className="no-decoration"><Brand /></Link></HeadbarBrand>
+      <HeadbarList>
+        <Link to={'/'} className='no-decoration'><HeadbarItem color="white">Para você</HeadbarItem></Link>
+        <HeadbarItem color="white">Para o seu negócio</HeadbarItem>
+        <HeadbarItem color="dark">Suporte para negócio</HeadbarItem>
+        <Link to={'/contentA'} className='no-decoration'><HeadbarItem color="dark">Atendimento</HeadbarItem></Link>
+        <HeadbarAccount>
+        <Link to={'/Signup'} className='no-decoration'><TinyRedButton>Cadastrar-se</TinyRedButton></Link>
+        <Link to={'/Signin'} className='no-decoration'><TinyRedButton>Login</TinyRedButton></Link>
+        </HeadbarAccount>
+      </HeadbarList>
+    </TranspHeadbar>
+    this.loggedItemList =
+    <Headbar>
+      <HeadbarBrand><Link to="/" className="no-decoration"><Brand /></Link></HeadbarBrand>
+      <HeadbarList>
+        <Link to={'/'} className='no-decoration'><HeadbarItem color="white">Resumo</HeadbarItem></Link>
+        <Link to={'/Signin'} className='no-decoration'><HeadbarItem color="white">Atividades</HeadbarItem></Link>
+        <Link to={'/Signup'} className='no-decoration'><HeadbarItem color="white">Para você</HeadbarItem></Link>
+        <Link to={'/contentA'} className='no-decoration'><HeadbarItem color="white">Ajuda</HeadbarItem></Link>
+        <Link className="no-decoration"><HeadbarAccount>{this.props.user}</HeadbarAccount></Link>
+      </HeadbarList>
+    </Headbar>
+  }
+
+  renderHeadbar(){
+    if (this.props.user !== null){
+      return this.loggedItemList
+    }else {
+      return this.unloggedItemList
+    } 
+  }
 
   render() {
     return (
       <Router>
         <div className='container'>
-          <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-            <Link to={'/'} className='navbar-brand'>Desafio Vtex</Link>
-            <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-              <ul className='navbar-nav mr-auto'>
-                <li>
-                  <Link to={'/'} className='nav-link'>Home</Link>
-                </li>
-                <li>
-                  <Link to={'/signin'} className='nav-link'>Login</Link>
-                </li>
-                <li>
-                  <Link to={'/signup'} className='nav-link'>Cadastro</Link>
-                </li>
-                <li>
-                  <Link to={'/contentA'} className='nav-link'>Conteúdo A</Link>
-                </li>
-                <li>
-                  <Link to={'/contentB'} className='nav-link'>Conteúdo B</Link>
-                </li>
-              </ul>
-            </div>
-            {this.props.user}
-          </nav>
+          <TranspHeadbar>
+            {this.renderHeadbar()}
+            {this.props.user !== null ? <Redirect to="/" /> : null}
+          </TranspHeadbar>
           <Switch>
-            <Route exact path='/' component={Main} />
-            <Route path='/signin' component={Signin} />
-            <Route path='/signup' component={Signup} />
+            <Route exact path='/' component={Home} />
+            <Route path='/Signin' component={Signin} />
+            <Route path='/Signup' component={Signup} />
             <Route path='/contentA' component={ContentA} />
-            <Route path='/contentB' component={ContentB} />
           </Switch>
         </div>
       </Router>
