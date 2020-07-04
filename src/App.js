@@ -5,7 +5,6 @@ import Home from './components/Home'
 import Signin from './components/Signin'
 import Signup from './components/Signup'
 import ContentA from './components/ContentA'
-import ContentB from './components/ContentB'
 import Headbar, {TranspHeadbar, HeadbarBrand, HeadbarList, HeadbarItem, HeadbarAccount, Brand} from './components/Headbar'
 import { TinyRedButton } from './components/Buttons'
 
@@ -52,10 +51,8 @@ class App extends Component {
     return (
       <Router>
         <div className='container'>
-          <TranspHeadbar>
-            {this.renderHeadbar()}
-            {this.props.user !== null ? <Redirect to="/" /> : null}
-          </TranspHeadbar>
+          {this.renderHeadbar()}
+          {this.props.user !== null ? <Redirect to="/" /> : null}
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/Signin' component={Signin} />
