@@ -169,6 +169,14 @@
     color: var(--tema_cor_c);
 }
 
+.alert-info{
+    color: var(--tema_cor_b)
+}
+
+.alert-danger{
+    color: var(--tema_cor_a)
+}
+
 .HeadbarAccount{
     display: inline-flex;
     justify-content: flex-end;
@@ -177,7 +185,7 @@
     font-weight: bold;
     margin: 0 30px;
     line-height: 1.8em;
-    color: var(--tema_cor_c);
+    color: #fff;
 }
 
 .Brand{
@@ -237,6 +245,7 @@
     cursor: pointer;
     margin: 0 auto;
     padding: 6px 18px;
+    margin: 0 10px;
 }
 
 .InputContainer{
