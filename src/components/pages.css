@@ -1,0 +1,25 @@
+.home{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.home_section, .home_functions{
+    flex-basis: calc(50% - 122px);
+    margin: 0 60px;
+}
+
+.home_functions{
+    padding: 10px 0;
+}
+
+.home_section_options{
+    width: 70%;
+    display: flex;
+    margin: 20px 0;
+    justify-content: space-between;
+}
+
+.home_views{
+    flex-basis: calc(100% - 120px);
+    margin: 0 60px;
+}
