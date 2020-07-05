@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { resetAuthMsg } from '../store/actions/authActionCreator'
 import { connect } from 'react-redux'
+import '../App.css';
+
 
 class Card extends Component {
 

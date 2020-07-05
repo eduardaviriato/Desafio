@@ -1,0 +1,22 @@
+{
+  "estud": [
+    {
+      "cpfcli": " Cpf tal",
+      "data": " 20/10",
+      "valor":"20",
+      "canalcompra": "fisico",
+      "metodoent": "loja fisica",
+      "metodopag":"dinheiro",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "cpfcli": " 1234567",
+      "data": " 20/10",
+      "valor":"20",
+      "canalcompra": "fisico",
+      "metodoent": "loja fisica",
+      "metodopag":"dinheiro"
+    }
+  ]
+}

@@ -1,6 +1,10 @@
 .App {
   text-align: center;
 }
+.content .card{
+  background-color: rgb(245, 241, 241);
+  color: rgb(10, 10, 10);
+}
 
 .App-logo {
   height: 40vmin;
@@ -14,7 +18,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-image: -webkit-linear-gradient(50deg, rgb(170, 40, 40) 50%, #f5eeee 50%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
