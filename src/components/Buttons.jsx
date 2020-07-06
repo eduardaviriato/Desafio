@@ -9,8 +9,12 @@ class BigBlueButton extends Component{
 }
 
 class TinyRedButton extends Component{
-    render(){ return(<button className="TinyRedButton" type={this.props.type} value={this.props.value}> {this.props.children} </button>) }
+    render(){ return(<button className="TinyRedButton Transition" type={this.props.type} value={this.props.value}> {this.props.children} </button>) }
 }
 
-export {BigBlueButton, TinyRedButton}
+class MediumWhiteButton extends Component{
+    render(){ return(<div className="MediumWhiteButton Transition">{this.props.children}</div>) }
+}
+
+export {BigBlueButton, TinyRedButton, MediumWhiteButton}
 export default LittleGrayButton;

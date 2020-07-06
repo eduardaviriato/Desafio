@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { signin } from '../store/actions/authActionCreator'
 import {TinyRedButton} from './Buttons'
 import {Subtitle} from './Text'
+import { PolySingin } from './Polys';
 
 class Signin extends Component{
 
@@ -47,6 +48,7 @@ class Signin extends Component{
     render(){
         return (
 			<div className="FormContainer">
+                
 				<form className="Form" onSubmit={this.onSubmit}>
 					<div className="CenterContainer">
                         <Subtitle>Fazer login</Subtitle>

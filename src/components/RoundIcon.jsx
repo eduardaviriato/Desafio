@@ -4,10 +4,8 @@ import './icons.css'
 class RoundIcon extends Component{
     render(){
         return(
-            <div className="RoundIconContainer">
-                <div className={'RoundIcon Transition icon-' + this.props.icon}></div>
-            </div>
-        );
+            <div className="RoundIconContainer"><div className={'RoundIcon Transition icon-notext icon-' + this.props.icon}/></div>
+        )
     }
 }
 

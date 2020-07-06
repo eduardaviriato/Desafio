@@ -13,7 +13,7 @@ class HeadbarBrand extends Component{
 }
 
 class Brand extends Component{
-    render(){ return(<div className="Brand"> Desafio Vtex </div>) }
+    render(){ return(<div className="Brand"> OmniWatch </div>) }
 }
 
 class HeadbarList extends Component{

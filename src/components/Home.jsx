@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import Text, {Title, Subtitle} from './Text'
-import RoundIcon from './RoundIcon'
+import {Link} from 'react-router-dom'
 import LittleGrayButton, {BigBlueButton} from './Buttons'
+import Drop from './Dropdown'
 import './pages.css'
 
 class Home extends Component{
@@ -14,9 +15,7 @@ class Home extends Component{
                         Mussum Ipsum, cacilds vidis litro abertis. Tá deprimidis, eu conheço uma cachacis que pode alegrar sua vidis. Mauris nec dolor in eros commodo tempor. Aenean aliquam molestie leo, vitae iaculis nisl.
                     </Text>
                     <div className="home_section_options">
-                        <RoundIcon icon="down-arrow"/>
-                        <RoundIcon icon="calendar"/>
-                        <RoundIcon icon="calendar"/>
+                        <Drop/>
                     </div>
                 </div>
                 <div className="home_functions">
@@ -27,11 +26,11 @@ class Home extends Component{
                     <div className="home_views_header">
                         <Subtitle>Como você deseja ver seu volume financeiro?</Subtitle>
                     </div>
-                    <LittleGrayButton>Por horário</LittleGrayButton>
-                    <LittleGrayButton>Por dia</LittleGrayButton>
-                    <LittleGrayButton>Por mês</LittleGrayButton>
-                    <LittleGrayButton>Por ano</LittleGrayButton>
-                    <LittleGrayButton>Comparar anos</LittleGrayButton>
+                    <Link to="/charts/hours" className="no-decoration"><LittleGrayButton>Por horário</LittleGrayButton></Link>
+                    <Link to="/charts/days" className="no-decoration"><LittleGrayButton>Por dia</LittleGrayButton></Link>
+                    <Link to="/charts/months" className="no-decoration"><LittleGrayButton>Por mês</LittleGrayButton></Link>
+                    <Link to="/charts/years" className="no-decoration"><LittleGrayButton>Por ano</LittleGrayButton></Link>
+                    <Link to="/charts/compare_years" className="no-decoration"><LittleGrayButton>Comparar anos</LittleGrayButton></Link>
                 </div>
             </div>
         )

@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-
+import Chart from './Chart'
 
 import Card from './RestrictedCard'
 
 export default class Content extends Component {
     render() {
         return (
-            <Card title='Conteúdo do Site' history={this.props.history}>
-                Conteúdo apenas para usuários A<br /><br />
+            <Card history={this.props.history}>
+                Comparação de vendas por ano
+                <Chart /><br /><br />
             </Card>
         )
     }

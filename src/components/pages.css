@@ -23,3 +23,42 @@
     flex-basis: calc(100% - 120px);
     margin: 0 60px;
 }
+
+.landing{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.landing_section, .landing_functions{
+    flex-basis: calc(50% - 122px);
+    margin: 20px 30px;
+}
+
+.landing_functions{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.chart_title{
+    padding: 0 45px;
+}
+
+.body_chart_container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.section_hint{
+    flex-basis: calc(40% - 50px);
+    margin: 0 25px;
+}
+.section_chart{
+    flex-basis: calc(60% - 50px);
+    margin: 0 25px;
+}
+
+.section_chart_container{
+    width: 100%;
+    margin: 10px auto;
+}

@@ -58,10 +58,10 @@ class Signup extends Component {
         e.preventDefault()
         this.setState({ loading: true })
 
-        this.props.signup(this.state.login, this.state.password, (user) => {
+        this.props.signup(this.state.email, this.state.password, (user) => {
             this._isMounted && this.setState({ loading: false })
         })
-        this.setState({ login: '', password: '' })
+        this.setState({ email: '', password: '' })
     }
 
     renderButton() {
@@ -109,7 +109,7 @@ class Signup extends Component {
                     </div>
                     <div className="InputContainer">
                         <label className="Label">E-mail</label>
-                        <input type="text" className="Input"
+                        <input type="email" className="Input"
                             value={this.state.email} onChange={this.setEmail} />
                     </div>
                     <div className="InputContainer">
@@ -124,7 +124,7 @@ class Signup extends Component {
                     </div>
                     <div className="InputContainer">
                         <label className="Label">Confirme sua senha</label>
-                        <input type="password_conf" className="Input"
+                        <input type="password" className="Input"
                             value={this.state.passwordConf} onChange={this.setPasswordConf} />
                     </div>
                     <div className="InputContainer">
@@ -142,13 +142,13 @@ class Signup extends Component {
 function mapStateToProps(state) {
     return {
         authMsg: state.authReducer.authMsg
-    };
+    }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        signup(login, password, callback) {
-            const action = signup(login, password, callback)
+        signup(email, password, callback) {
+            const action = signup(email, password, callback)
             dispatch(action)
         }
     }

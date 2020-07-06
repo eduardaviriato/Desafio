@@ -14,14 +14,50 @@
 
 *{font-family: 'Open Sans', sans-serif;}
 
-.diagonal-poly{
+.PolyLanding{
+    position: absolute;
     top: 0;
-    z-index: -1;
     width: 100%;
     height: 100%;
     clip-path: polygon(0% 0%, 58% 0%, 20% 100%, 0% 100%);
     background: var(--tema_cor_a);
+    z-index: -1;
+}
+
+.FilterContainer{
+    display: inline-flex;
+    align-items: center;
+    padding: 0 45px;
+    margin: 0 0;
+}
+
+.FilterButton{
+    display: inline-block;
+    border: 0px;
+    background: var(--tema_cor_b);
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    padding: 6px 18px;
+    margin-left: 6px;
+    border-radius: 9px;
+    box-shadow: 0px 0px 2px black;
+}
+.FilterButton:hover{
+    background: var(--tema_cor_b_d);
+    cursor: pointer;
+    box-shadow: 0px 0px 0px #ffff;
+}
+
+.PolySignin{
     position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0% 0%, 20% 0%, 0% 70%, 0% 100%);
+    background: var(--tema_cor_a);
+    z-index: -1;
 }
 
 .Transition{
@@ -53,13 +89,13 @@
 .Subtitle{
     font-weight: normal;
     font-size: 1.5em;
-    line-height: 0.8em;
+    line-height: 1em;
     color: var(--tema_cor_c);
 }
 
 .RoundIcon{
     border-radius: 50%;
-    padding: 25px;
+    padding: 20px 22px;
     display: inline;
     background: var(--tema_cor_a);
     color: #fff;
@@ -74,6 +110,47 @@
     display: inline-flex;
     height: 70px;
 }
+
+.Dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .Dropdown .Dropbutton {
+    font-size: 1.5em;  
+    border: none;
+    outline: none;
+  }
+
+  .DropdownContent {
+    display: none;
+    border-radius: 10px;
+    position: absolute;
+    background-color: #dad8d8;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .DropdownContent a {
+    font-weight: normal;
+    float: none;
+    color: #282828;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .DropdownContent a:hover {
+    color: rgb(255, 255, 255);
+    background: #282828;
+  }
+  
+  .Dropdown:hover .DropdownContent {
+    display: block;
+  }
 
 .BigBlueButton{
     display: flex;
@@ -90,6 +167,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1.3em;
+    box-shadow: 0px 0px 2px black;
 }
 
 .BigBlueButton:hover{
@@ -97,6 +175,7 @@
     border: 2px solid var(--tema_cor_b_d);
     color: #fff;
     cursor: pointer;
+    box-shadow: 0px 0px 0px #ffff;
 }
 
 .LittleGrayButton{
@@ -111,6 +190,7 @@
     color: var(--tema_cor_c);
     font-weight: 600;
     font-size: 1.1em;
+    box-shadow: 0px 0px 2px black;
 }
 
 .LittleGrayButton:hover{
@@ -118,7 +198,31 @@
     background: var(--tema_cor_c_d);
     color: #fff;
     cursor: pointer;
+    box-shadow: 0px 0px 0px #ffff;
 }
+
+.MediumWhiteButton{
+    font-weight: bold;
+    display: flex;
+    flex-basis: calc(50% - 80px);
+    width: 210px;
+    margin: 15px;
+    height: 130px;
+    border-radius: 30px;
+    background-color: #fff;
+    color: var(--tema_cor_c);
+    box-shadow: 0px 0px 2px black;
+    justify-content: center;
+    align-items: center;
+}
+
+.MediumWhiteButton:hover{
+    background: var(--tema_cor_c);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px #ffff;
+}
+
 
 .Headbar{
     height: 65px;
@@ -126,6 +230,7 @@
     flex-basis: 100%;
     background: var(--tema_cor_a);
     margin-bottom: 25px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.157);
 }
 
 .TranspHeadbar{
@@ -133,6 +238,7 @@
     width: 100%;
     height: 65px;
     background-color: rgba(0, 0, 0, 0);
+    margin-bottom: 25px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.157);
 }
 
@@ -238,7 +344,7 @@
 .TinyRedButton{
     border: 0px;
     border-radius: 6px;
-    background-color: #eb3156;
+    background-color: var(--tema_cor_a);
     font-weight: bolder;
     font-family: 'Open Sans', sans-serif;
     color: white;
@@ -246,6 +352,10 @@
     margin: 0 auto;
     padding: 6px 18px;
     margin: 0 10px;
+}
+
+.TinyRedButton:hover{
+    background-color: var(--tema_cor_a_d);
 }
 
 .InputContainer{

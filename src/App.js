@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Link, Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import ChartPage from './components/ChartPage'
+import './components/icons.css'
+import Landing from './components/Landing'
 import Home from './components/Home'
 import Signin from './components/Signin'
 import Signup from './components/Signup'
@@ -13,7 +16,7 @@ class App extends Component {
     super(props)
     this.unloggedItemList =
     <TranspHeadbar>
-      <div className="diagonal-poly"></div>
+      <div className="PolyLanding"></div>
       <HeadbarBrand><Link to="/" className="no-decoration"><Brand /></Link></HeadbarBrand>
       <HeadbarList>
         <Link to={'/'} className='no-decoration'><HeadbarItem color="white">Para você</HeadbarItem></Link>
@@ -21,8 +24,8 @@ class App extends Component {
         <HeadbarItem color="dark">Suporte para negócio</HeadbarItem>
         <Link to={'/contentA'} className='no-decoration'><HeadbarItem color="dark">Atendimento</HeadbarItem></Link>
         <HeadbarAccount>
-        <Link to={'/Signup'} className='no-decoration'><TinyRedButton>Cadastrar-se</TinyRedButton></Link>
-        <Link to={'/Signin'} className='no-decoration'><TinyRedButton>Login</TinyRedButton></Link>
+        <Link to={'/signup'} className='no-decoration'><TinyRedButton>Cadastrar-se</TinyRedButton></Link>
+        <Link to={'/signin'} className='no-decoration'><TinyRedButton>Login</TinyRedButton></Link>
         </HeadbarAccount>
       </HeadbarList>
     </TranspHeadbar>
@@ -30,9 +33,9 @@ class App extends Component {
     <Headbar>
       <HeadbarBrand><Link to="/" className="no-decoration"><Brand /></Link></HeadbarBrand>
       <HeadbarList>
-        <Link to={'/'} className='no-decoration'><HeadbarItem color="white">Resumo</HeadbarItem></Link>
-        <Link to={'/Signin'} className='no-decoration'><HeadbarItem color="white">Atividades</HeadbarItem></Link>
-        <Link to={'/Signup'} className='no-decoration'><HeadbarItem color="white">Para você</HeadbarItem></Link>
+        <Link to={'/home'} className='no-decoration'><HeadbarItem color="white">Dashboard</HeadbarItem></Link>
+        <Link to={'/signin'} className='no-decoration'><HeadbarItem color="white">Atividades</HeadbarItem></Link>
+        <Link to={'/signup'} className='no-decoration'><HeadbarItem color="white">Para você</HeadbarItem></Link>
         <Link to={'/contentA'} className='no-decoration'><HeadbarItem color="white">Ajuda</HeadbarItem></Link>
         <Link className="no-decoration"><HeadbarAccount>{this.props.user}</HeadbarAccount></Link>
       </HeadbarList>
@@ -52,11 +55,17 @@ class App extends Component {
       <Router>
         <div className='container'>
           {this.renderHeadbar()}
-          {this.props.user !== null ? <Redirect to="/" /> : null}
+          {this.props.user !== null ? <Redirect to="/home" /> : <Redirect to="/" />}
           <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/Signin' component={Signin} />
-            <Route path='/Signup' component={Signup} />
+            <Route exact path='/' component={Landing} />
+            <Route path='/charts/hours'> <ChartPage classification='por hora'/> </Route>
+            <Route path='/charts/days'> <ChartPage classification='por dia'/> </Route>
+            <Route path='/charts/months'> <ChartPage classification='por mês'/> </Route>
+            <Route path='/charts/years'> <ChartPage classification='por ano'/> </Route>
+            <Route path='/charts/compare_years'> <ChartPage classification='comparando anos'/> </Route>
+            <Route path='/home' component={Home} />
+            <Route path='/signin' component={Signin} />
+            <Route path='/signup' component={Signup} />
             <Route path='/contentA' component={ContentA} />
           </Switch>
         </div>

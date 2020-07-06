@@ -28,7 +28,7 @@ class RestrictedCard extends Component {
         return (
             <Card title={this.props.title}>
                 {this.props.children}
-                <button className='btn btn-danger' onClick={() => this.logout()}>
+                <button className='TinyRedButton' onClick={() => this.logout()}>
                     Logout
                 </button>
             </Card>
