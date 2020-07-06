@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { signin } from '../store/actions/authActionCreator'
-import Card from './Card'
+import {TinyRedButton} from './Buttons'
+import {Subtitle} from './Text'
+import { PolySingin } from './Polys';
 
-class Signin extends Component {
+class Signin extends Component{
 
-    constructor(props) {
+	constructor(props) {
         super(props)
         this.state = { login: '', password: '' }
 
@@ -13,7 +15,7 @@ class Signin extends Component {
         this.setPassword = this.setPassword.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
     }
-
+    
     setLogin(e) {
         this.setState({ login: e.target.value })
     }
@@ -36,36 +38,47 @@ class Signin extends Component {
         if (this.props.authMsg) {
             let alertType = this.props.authMsg.includes('Err') ? 'alert-danger' : 'alert-info'
             return (
-                <div className={`alert ${alertType}`} role='alert'>
+                <div className={`${alertType}`}>
                     {this.props.authMsg}
                 </div>
             )
         }
     }
 
-    render() {
+    render(){
         return (
-            <Card title='Faça o seu Login'>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Login: </label>
-                        <input type="text" className="form-control"
-                            value={this.state.login} onChange={this.setLogin} />
+			<div className="FormContainer">
+                
+				<form className="Form" onSubmit={this.onSubmit}>
+					<div className="CenterContainer">
+                        <Subtitle>Fazer login</Subtitle>
                     </div>
-                    <div className="form-group">
-                        <label>Senha: </label>
-                        <input type="password" className="form-control"
-                            value={this.state.password} onChange={this.setPassword} />
-                    </div>
-                    <div className="form-group">
-                        <input type="submit" value="Efetuar Login" className="btn btn-primary" />
-                    </div>
-                </form>
-                {this.renderMessage()}
-            </Card>
+					<div className="InputContainer">
+				        <label className="Label" for="login">Login</label>
+				        <input name="login" id="login" className="Input" type="text" onChange={this.setLogin} value={this.state.login} />
+				    </div>
+				    <div className="InputContainer">
+				        <label className="Label" for="passwd">Senha</label>
+				        <input name="passwd" id="passwd" className="Input" type="password" onChange={this.setPassword} value={this.state.password} />
+				    </div>
+
+			        <div className="CenterContainer">
+			            <TinyRedButton type="submit" value="entrar">Entrar</TinyRedButton>
+			        </div>
+			        <div className="CenterContainer form_footer">
+			            <p className>Esqueceu a senha? <a href="#" className="a">Clique aqui!</a></p>
+			        </div>
+                    <div className="CenterContainer form_footer">
+                        {this.renderMessage()}
+			        </div>
+                    
+			    </form>
+			</div>
         )
     }
+    
 }
+
 
 function mapStateToProps(state) {
     return {

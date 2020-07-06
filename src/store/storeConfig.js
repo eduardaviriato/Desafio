@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from "redux-thunk";
-import reducer from '../store/reducers';
+import reducer from './reducers';
 import firebase from '../utils/firebase';
 
 function saveToLocalStorage(state){

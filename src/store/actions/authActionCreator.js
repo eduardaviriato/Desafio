@@ -1,5 +1,5 @@
 import { SIGNUP_SUCCESS, SIGNUP_ERROR, SIGNOUT_SUCCESS, SIGNOUT_ERROR, SIGNIN_SUCCESS, SIGNIN_ERROR, EMAIL_NOT_VERIFIED, RESET_AUTH_MSG } from "./actionTypes";
-import firebase from '../../utils/firebase'
+import firebase from '../../utils/firebase.js'
 
 export const signup = (email, password, callback) => {
     return dispatch => {

@@ -1,16 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { signup } from '../store/actions/authActionCreator'
-import Card from './Card'
+import {TinyRedButton} from './Buttons'
+import {Subtitle} from './Text'
 
 class Signup extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { login: '', password: '', loading: false }
-
-        this.setLogin = this.setLogin.bind(this)
+        this.state = {
+            name: '',
+            email: '',
+            phone: '',
+            password: '',
+            passwordConf: '',
+            loading: false }
+        
+        this.setName = this.setName.bind(this)
+        this.setEmail = this.setEmail.bind(this)
+        this.setPhone = this.setPhone.bind(this)
         this.setPassword = this.setPassword.bind(this)
+        this.setPasswordConf = this.setPasswordConf.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
 
         this._isMounted = false
@@ -24,37 +34,53 @@ class Signup extends Component {
         this._isMounted = false
     }
 
-    setLogin(e) {
-        this.setState({ login: e.target.value })
+    setName(e) {
+        this.setState({ name: e.target.value })
+    }
+
+    setEmail(e) {
+        this.setState({ email: e.target.value })
+    }
+
+    setPhone(e) {
+        this.setState({ phone: e.target.value })
     }
 
     setPassword(e) {
         this.setState({ password: e.target.value })
+    }
+    
+    setPasswordConf(e) {
+        this.setState({ passwordConf: e.target.value })
     }
 
     onSubmit(e) {
         e.preventDefault()
         this.setState({ loading: true })
 
-        this.props.signup(this.state.login, this.state.password, (user) => {
+        this.props.signup(this.state.email, this.state.password, (user) => {
             this._isMounted && this.setState({ loading: false })
         })
-        this.setState({ login: '', password: '' })
+        this.setState({ email: '', password: '' })
     }
 
     renderButton() {
         if (this.state.loading) {
             return (
-                <button className="btn btn-primary" type="button" disabled>
+                <div className="CenterContainer">
+                <button className="TinyRedButton" type="button" disabled>
                     <span className="spinner-border spinner-border-sm" role="status"
                         aria-hidden="true">
 
                     </span>
                             Carregando...
                 </button>
+                </div>
             )
         }
-        return <input type="submit" value="Cadastrar" className="btn btn-primary" />
+        return  <div className="CenterContainer">
+            <TinyRedButton type="submit" value="Cadastrar">Cadastrar</TinyRedButton>
+            </div>
 
     }
 
@@ -71,24 +97,44 @@ class Signup extends Component {
 
     render() {
         return (
-            <Card title='Faça o seu cadastro'>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Login: </label>
-                        <input type="text" className="form-control"
-                            value={this.state.login} onChange={this.setLogin} />
+            <div className="FormContainer">
+                <form onSubmit={this.onSubmit} className="Form">
+                    <div className="CenterContainer">
+                        <Subtitle>Cadastre-se</Subtitle>
                     </div>
-                    <div className="form-group">
-                        <label>Senha: </label>
-                        <input type="password" className="form-control"
+                    <div className="InputContainer">
+                        <label className="Label">Nome</label>
+                        <input type="text" className="Input"
+                            value={this.state.name} onChange={this.setName} />
+                    </div>
+                    <div className="InputContainer">
+                        <label className="Label">E-mail</label>
+                        <input type="email" className="Input"
+                            value={this.state.email} onChange={this.setEmail} />
+                    </div>
+                    <div className="InputContainer">
+                        <label className="Label">Telefone</label>
+                        <input type="number" className="Input"
+                            value={this.state.phone} onChange={this.setPhone}/>
+                    </div>
+                    <div className="InputContainer">
+                        <label className="Label">Senha</label>
+                        <input type="password" className="Input"
                             value={this.state.password} onChange={this.setPassword} />
                     </div>
-                    <div className="form-group">
+                    <div className="InputContainer">
+                        <label className="Label">Confirme sua senha</label>
+                        <input type="password" className="Input"
+                            value={this.state.passwordConf} onChange={this.setPasswordConf} />
+                    </div>
+                    <div className="InputContainer">
                         {this.renderButton()}
                     </div>
                 </form>
-                {this.renderMessage()}
-            </Card>
+                <div className="CenterContainer form_footer">
+                    {this.renderMessage()}
+                </div>
+            </div>
         )
     }
 }
@@ -96,13 +142,13 @@ class Signup extends Component {
 function mapStateToProps(state) {
     return {
         authMsg: state.authReducer.authMsg
-    };
+    }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        signup(login, password, callback) {
-            const action = signup(login, password, callback)
+        signup(email, password, callback) {
+            const action = signup(email, password, callback)
             dispatch(action)
         }
     }
